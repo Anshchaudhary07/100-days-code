@@ -3,28 +3,35 @@
 #include <stdio.h>
 
 int main() {
-    int arr[100], n;
-    int totalSum = 0, leftSum = 0, pivot = -1;
-
-    printf("Enter number of elements: ");
+    int n;
+    printf("Enter size of array: ");
     scanf("%d", &n);
 
-    printf("Enter %d elements:\n", n);
+    int arr[n];
+    printf("Enter %d integers:\n", n);
     for (int i = 0; i < n; i++) {
         scanf("%d", &arr[i]);
-        totalSum += arr[i]; 
     }
+
+    int totalSum = 0;
+    for (int i = 0; i < n; i++) {
+        totalSum += arr[i];
+    }
+
+    int leftSum = 0;
 
     for (int i = 0; i < n; i++) {
         int rightSum = totalSum - leftSum - arr[i];
+
         if (leftSum == rightSum) {
-            pivot = i;
-            break; 
+            printf("Pivot Index = %d\n", i);
+            return 0;
         }
+
         leftSum += arr[i];
     }
 
-    printf("Pivot index: %d\n", pivot);
-
+    printf("-1\n");
     return 0;
 }
+

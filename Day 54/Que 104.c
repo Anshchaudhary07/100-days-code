@@ -4,22 +4,21 @@
 
 int main() {
     int n;
-    int x = -1;
-
     printf("Enter a positive integer n: ");
     scanf("%d", &n);
 
-    for (int i = 1; i <= n; i++) {
-        int leftSum = i * (i + 1) / 2;
-        int rightSum = n * (n + 1) / 2 - (i - 1) * i / 2;
+    int totalSum = n * (n + 1) / 2;
+
+    for (int x = 1; x <= n; x++) {
+        int leftSum = x * (x + 1) / 2;
+        int rightSum = totalSum - (x * (x - 1) / 2);
 
         if (leftSum == rightSum) {
-            x = i;
-            break; 
+            printf("%d\n", x);
+            return 0;
         }
     }
 
-    printf("Pivot integer: %d\n", x);
-
+    printf("-1\n");
     return 0;
 }
